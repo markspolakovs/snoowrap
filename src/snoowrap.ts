@@ -292,7 +292,7 @@ export default class snoowrap extends Snoowrap.RequestHandler {
       throw new errors.NoCredentialsError();
     }
     if (isBrowser) {
-      this.userAgent = global.navigator.userAgent;
+      this.userAgent = (global as unknown as Window).navigator.userAgent;
     }
     defaults(this, {userAgent, clientId, clientSecret, refreshToken, accessToken, username, password}, {
       clientId: null,
@@ -415,7 +415,7 @@ export default class snoowrap extends Snoowrap.RequestHandler {
    */
   static fromAuthCode ({
     code = requiredArg('code'),
-    userAgent = isBrowser ? global.navigator.userAgent : requiredArg('userAgent'),
+    userAgent = isBrowser ? (global as unknown as Window).navigator.userAgent : requiredArg('userAgent'),
     clientId = requiredArg('clientId'),
     clientSecret,
     redirectUri = requiredArg('redirectUri'),
@@ -503,7 +503,7 @@ export default class snoowrap extends Snoowrap.RequestHandler {
   * })
   */
   static fromApplicationOnlyAuth ({
-    userAgent = isBrowser ? global.navigator.userAgent : requiredArg('userAgent'),
+    userAgent = isBrowser ? (global as unknown as Window).navigator.userAgent : requiredArg('userAgent'),
     clientId = requiredArg('clientId'),
     clientSecret,
     deviceId,

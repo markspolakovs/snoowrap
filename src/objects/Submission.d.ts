@@ -1,4 +1,4 @@
-import { Sort } from '../snoowrap';
+import { Snoowrap } from '../snoowrap';
 import Comment from './Comment';
 import Listing, { ListingOptions } from './Listing';
 import { FlairTemplate } from './Subreddit';
@@ -97,7 +97,7 @@ export default class Submission extends VoteableContent<Submission> {
   spam?: boolean;
   spoiler: boolean;
   subreddit_subscribers: number;
-  suggested_sort: Sort | null;
+  suggested_sort: Snoowrap.Sort | null;
   thumbnail: string;
   thumbnail_height?: number | null;
   thumbnail_width?: number | null;
@@ -121,7 +121,7 @@ export default class Submission extends VoteableContent<Submission> {
   markNsfw(): Promise<this>;
   markSpoiler(): Promise<this>;
   selectFlair(options: { flair_template_id: string; text?: string; }): Promise<this>;
-  setSuggestedSort(sort: Sort): Promise<this>;
+  setSuggestedSort(sort: Snoowrap.Sort): Promise<this>;
   sticky(options?: { num?: number }): Promise<this>;
   unhide(): Promise<this>;
   unlock(): Promise<this>;
